@@ -1,0 +1,12 @@
+var db_name = process.env.MONGODB_NAME;
+var coll_name = process.env.MONGODB_COLLECTION;
+var org_name = process.env.MONGODB_ORGNAME;
+use db_name;
+var fetch_data = db.coll_name.find({"org_id": org_name}).toArray();
+fs.writeFile("terraform.tfvars.json", JSON.stringify(fetch_data), function(err){
+    if (err) {
+        console.error("Error writing file: ", err)
+    } else {
+        console.log("Data exported")
+    }
+});
