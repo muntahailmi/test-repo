@@ -22,9 +22,9 @@ terraform {
 remote_state {
   backend = "gcs"
   config = {
-    bucket = getenv("REMOTESTATE_BUCKET")
-    prefix = getenv("REMOTESTATE_PREFIX","terraform.state")
-    project = getenv("REMOTESTATE_PROJECT")
-    location = getenv("REMOTESTATE_LOCATION")
+    bucket = get_env("REMOTESTATE_BUCKET")
+    prefix = get_env("REMOTESTATE_PREFIX","terraform.state")
+    project = get_env("REMOTESTATE_PROJECT")
+    location = get_env("REMOTESTATE_LOCATION")
   }
 }
